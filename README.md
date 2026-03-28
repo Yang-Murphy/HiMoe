@@ -36,13 +36,19 @@
 |--|--|--|
 |![](images/item_spec_gowalla_L3.png)|![](images/item_spec_amazon_L3.png)|![](images/item_spec_yelp_L3.png)|
 
-## Exp 4: RoPE Layer Distinguishability
+## Exp 4: RoPE Inter-Layer Cosine Similarity (Cross-Dataset)
+
+|Dataset|With RoPE|Without RoPE|Reduction|
+|--|--|--|--|
+|Gowalla|0.765|0.889|14.0%|
+|Amazon|0.798|0.911|12.4%|
+|Yelp|0.938|0.967|3.0%|
 
 |Gowalla|Amazon|Yelp|
 |--|--|--|
 |![](images/rope_distinguish_gowalla.png)|![](images/rope_distinguish_amazon.png)|![](images/rope_distinguish_yelp.png)|
 
-## Exp 5: Depth Ablation — GCN vs Hi-MoE (Gowalla, dim=64, Inter-layer Cosine Similarity)
+## Exp 5: RoPE Depth Ablation — GCN vs Hi-MoE (Gowalla, Inter-layer Cosine Similarity)
 
 |Layers|GCN|Hi-MoE|Reduction|
 |--|--|--|--|
