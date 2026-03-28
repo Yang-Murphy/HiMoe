@@ -48,9 +48,9 @@
 |--|--|--|
 |![](images/rope_distinguish_gowalla.png)|![](images/rope_distinguish_amazon.png)|![](images/rope_distinguish_yelp.png)|
 
-## Exp 5: RoPE Depth Ablation — GCN vs Hi-MoE (Gowalla, Inter-layer Cosine Similarity)
+## Exp 5: RoPE Depth Ablation — LightGCN vs Hi-MoE (Gowalla, Inter-layer Cosine Similarity)
 
-|Layers|GCN|Hi-MoE|Reduction|
+|Layers|LightGCN|Hi-MoE|Reduction|
 |--|--|--|--|
 |2|0.887|0.882|0.5%|
 |3|0.848|0.791|6.7%|
@@ -66,5 +66,39 @@
 |Gowalla|24.3%|34.7%|3.44×|
 |Amazon|9.8%|40.6%|2.43×|
 |Yelp|61.6%|7.1%|1.84×|
+
+## Exp 7: Expert Routing by User Degree (Gowalla)
+
+|Group|Top-3 Experts (L0)|Top-3 Experts (L1)|
+|--|--|--|
+|Cold(≤3)|E22,E16,E18|E30,E5,E3|
+|Active(≥16)|E3,E2,E30|E19,E12,E31|
+
+## Exp 8: Expert Population Analysis (Gowalla L1)
+
+|Expert|#Users|AvgDegree|Role|
+|--|--|--|--|
+|E5|1630|6.8|Cold-start|
+|E4|1164|19.8|Active|
+|E3|667|7.1|Cold-start|
+|E2|580|8.0|Low-activity|
+
+## Exp 9: Training Efficiency
+
+|Dataset|Model|Time/Epoch(s)|PeakGPU(MB)|
+|--|--|--|--|
+|Gowalla|LightGCN|0.88|2888|
+|Gowalla|LightGNN|8.05|2120|
+|Gowalla|Hi-MoE|4.28|8861|
+|Yelp|LightGCN|0.49|3424|
+|Yelp|Hi-MoE|2.64|9976|
+
+## Exp 10: Standard Deviations (5 Seeds)
+
+|Dataset|Recall@20|NDCG@20|
+|--|--|--|
+|Gowalla|0.2598±0.0015|0.1699±0.0010|
+|Yelp|0.1346±0.0010|0.0559±0.0004|
+|Amazon|0.1479±0.0016|0.1057±0.0016|
 
 All PDF figures available in `results/`.
